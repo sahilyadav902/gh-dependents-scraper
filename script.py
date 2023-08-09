@@ -4,7 +4,10 @@ import csv
 
 def scrape_dependents(repo_url):
     dependents = []
+    page=1
     while repo_url:
+        print(f"Processing Page: {page}")
+        page+=1
         response = requests.get(repo_url)
         soup = BeautifulSoup(response.content, 'html.parser')
         for repo_box in soup.find_all("div", class_="Box-row"):
